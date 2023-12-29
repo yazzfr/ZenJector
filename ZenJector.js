@@ -16,7 +16,8 @@ javascript: (function() {
     document.body.appendChild(injectorMenu);
     document.getElementById('injectCustomJS').addEventListener('click', function() {
         var jsCode = document.getElementById('jsCode').value;
-        eval(jsCode);
+        const unsafeEvalBypass = new Function(jsCode);
+        unsafeEvalBypass();
     });
     var isDragging = false;
     var offsetX, offsetY;
